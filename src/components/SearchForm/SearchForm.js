@@ -1,13 +1,16 @@
-// eslint-disable-next-line
-import styles from './SearchForm.module.scss';
+import styles from './SearchForm.module.scss'
+import TextInput from '../TextInput/TextInput';
+import Button from '../Button/Button';
 
 const SearchForm = () => {
     return (
         <form className={styles.searchForm}>
-            <input type="text" className={styles.input}/>
-            <button type="search" className={styles.button} >Search</button>
+            <TextInput placeholder="Search..." />
+            <Button>
+                <span className='fa fa-search' />
+            </Button>
         </form>
     );
-}
+  };
 
-  export default SearchForm;
+export default SearchForm;
