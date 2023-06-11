@@ -1,7 +1,6 @@
 import styles from './List.module.scss';
 import Column from './../Column/Column';
 import ColumnForm from './../ColumnForm/ColumnForm';
-//import CardForm from './../CardForm/CardForm';
 import { useState } from 'react';
 import shortid from 'shortid';
 
@@ -36,7 +35,7 @@ const List = () => {
     },
   ]);
 
-  const addColumn = (newColumn) => {
+  const addColumn = newColumn => {
     setColumns([
       ...columns,
       { id: shortid(), title: newColumn.title, icon: newColumn.icon, cards: [] },
@@ -44,7 +43,7 @@ const List = () => {
   };
 
   const addCard = (newCard, columnId) => {
-    const columnsUpdated = columns.map((column) => {
+    const columnsUpdated = columns.map(column => {
       if (column.id === columnId)
         return { ...column, cards: [...column.cards, { id: shortid(), title: newCard.title }] };
       else return column;
@@ -62,7 +61,7 @@ const List = () => {
       </header>
       <p className={styles.description}>Interesting things I want to check out</p>
       <section className={styles.columns}>
-        {columns.map((column) => (
+        {columns.map(column => 
           <Column
             key={column.id}
             id={column.id}
@@ -70,11 +69,12 @@ const List = () => {
             icon={column.icon}
             cards={column.cards}
             action={addCard}
+            addCard={addCard}
           />
-        ))}
+        )}
       </section>
       <ColumnForm action={addColumn} />
-    </div>
+      </div>
   );
 };
 
