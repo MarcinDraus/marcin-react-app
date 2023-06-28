@@ -4,6 +4,8 @@ import ColumnForm from './../ColumnForm/ColumnForm';
 import { useState } from 'react';
 import shortid from 'shortid';
 
+
+
 const List = () => {
   const [columns, setColumns] = useState([
     {
@@ -76,5 +78,14 @@ const List = () => {
       </div>
   );
 };
+
+
+
+
+
+
+
+
+
 
 export default List;
