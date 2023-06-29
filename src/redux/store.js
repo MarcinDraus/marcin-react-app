@@ -1,8 +1,11 @@
+
 import { createStore } from 'redux';
 import initialState from './initialState';
 
 const reducer = (state, action) => {
+    console.log(state, 'state');
   return state;
+  
 };
 
 const store = createStore(
