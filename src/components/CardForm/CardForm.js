@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Button from './../Button/Button';
 import TextInput from './../TextInput/TextInput';
 import { useDispatch } from 'react-redux';
+import { addCard } from '../../redux/store';//kreator
 
 const CardForm = (props) => {
   const dispatch = useDispatch();
@@ -11,7 +12,7 @@ const CardForm = (props) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    dispatch({ type: 'ADD_CARD', payload: { columnId: props.columnId, title } });
+    dispatch(addCard({ type: 'ADD_CARD', payload: { columnId: props.columnId, title } }));//kreator
     setTitle('');
   };
 
