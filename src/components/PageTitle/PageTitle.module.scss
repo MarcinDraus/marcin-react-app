@@ -1,0 +1,19 @@
+@import '../../styles/settings.scss';
+
+.h2 {
+    color: $color-light;
+    //text-decoration: none;
+    //font-size: 24px;
+    font-weight: bold;
+    padding: ($base-size * 3) 0;
+    text-align: center;
+    font-size: ($base-size * 3);
+    text-transform: uppercase;
+}
+
+    .title {
+        padding: ($base-size * 3) 0;
+        text-align: center;
+        font-size: ($base-size * 3);
+        text-transform: uppercase;
+      }
