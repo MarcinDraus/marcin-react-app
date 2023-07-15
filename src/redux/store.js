@@ -1,28 +1,36 @@
 
-import { createStore } from 'redux';
+//import { createStore } from 'redux';
+import { legacy_createStore as createStore} from 'redux'
 import initialState from './initialState';
 import shortid from 'shortid';
 import { strContains } from '../utils/strContains';
 
 //selectors
+export const getAllLists = (state) => state.lists;
+export const getColumnsByList = ({columns}, listId) => columns.filter(column => column.listId === listId);
+export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId);
 
 export const searchString = (payload) => ({type: 'SEARCHSTRING', payload});
 
 export const addCard = payload => ({ type: 'ADD_CARD', payload });
-export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });//kreator
+export const addColumn = payload => ({ type: 'ADD_COLUMN', payload });//{ listId, title, icon, id: shortid.generate() },
 
 export const getAllColumns = (state) => state.columns;
-
-export const getFilteredCards = ({ cards, searchString }, columnId) =>
-  cards.filter(
+export const getFilteredCards = ({ cards, searchString }, columnId) => {
+  console.log('getFilteredCards - cards:', cards);
+  console.log('getFilteredCards - searchString:', searchString);
+  console.log('getFilteredCards - columnId:', columnId);
+  return cards.filter(
     (card) =>
       card.columnId === columnId && strContains(card.title, searchString)
   );
-/* jej rola to dostanie się do tych kart z centrali, które pasują do podanej kolumny oraz frazy wyszukiwania.
+  
+ };
 
-Oczekujemy na dwa argumenty: stan zdanymi z centrali oraz id kolumny, która nas interesuje. Z której chcemy pobrać karty. Następnie funkcja przechodzi po wszystkich kartach (state.cards) i zwraca tylko te, które faktycznie mają columnId zgodne z argumentem columnId oraz title pasujące do state.searchString. */
 const reducer = (state, action) => {
+  console.log(action, 'action');
   console.log(state, 'state');
+
   switch (action.type) {
     case 'ADD_COLUMN':
       return { ...state, columns: [...state.columns, { ...action.payload, id: shortid() }] };
@@ -30,10 +38,13 @@ const reducer = (state, action) => {
       return { ...state, cards: [...state.cards, { ...action.payload, id: shortid() }] };
     case 'UPDATE_SEARCHSTRING':
       return { ...state, searchString: action.payload };
+    case 'SEARCHSTRING': // Dodany case dla akcji 'SEARCHSTRING'
+      return { ...state, searchString: action.payload };
     default:
       return state;
   }
 };
+
 
 const store = createStore(
   reducer,
