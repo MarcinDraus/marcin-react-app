@@ -6,6 +6,7 @@ import shortid from 'shortid';
 import { strContains } from '../utils/strContains';
 
 //selectors
+export const addListForm = payload => ({type: 'ADD_LISTFORM', payload});
 export const getAllLists = (state) => state.lists;
 export const getColumnsByList = ({columns}, listId) => columns.filter(column => column.listId === listId);
 export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId);
@@ -40,6 +41,8 @@ const reducer = (state, action) => {
       return { ...state, searchString: action.payload };
     case 'SEARCHSTRING': // Dodany case dla akcji 'SEARCHSTRING'
       return { ...state, searchString: action.payload };
+      case 'ADD_LISTFORM':
+        return {...state, lists: [ ...state.lists, {...action.payload, id: shortid() }] };
     default:
       return state;
   }

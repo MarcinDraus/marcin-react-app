@@ -27,10 +27,6 @@ const SearchForm = () => {
   };
 
 
-  // useEffect(() => { 
-  //   dispatch(searchString(''));}, [dispatch]); 
-  
-
   return (
     <form className={styles.searchForm} onSubmit={handleSubmit}>
       <TextInput value={titleSearch} onChange={(e) => {setTitleSearch(e.target.value);
