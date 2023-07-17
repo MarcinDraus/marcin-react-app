@@ -29,11 +29,11 @@ const List = () => {
       <SearchForm />
 
       <section className={styles.columns}>
-        {columns.map(column =>
+        {columns.map(column => (
           <Column
             key={column.id}
             {...column}  />
-        )}
+        ))}
       </section>
 
       <ColumnForm listId={listId} />
