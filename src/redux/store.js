@@ -19,7 +19,7 @@ export const getAllColumns = (state) => state.columns;
 export const getFilteredCards = ({ cards, searchString }, columnId) =>
   cards.filter((card) => card.columnId === columnId && strContains(card.title, searchString));
 
-export const getFavoriteLists = (state) => state.lists.filter((list) => list.isFavorite === true);
+export const getFavoriteLists = (state) => state.cards.filter(card => card.isFavorite === true);
 
 // Reducer
 const reducer = (state, action) => {
