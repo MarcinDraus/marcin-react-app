@@ -13,15 +13,17 @@ const Favorite = () => {
     <>
     <div className={styles.article}>
     <PageTitle>FAVORITE</PageTitle>
-    <div className={styles.column}>   
-      <ul className={styles.cards}>
-        {favoriteLists.map(list => 
-          <Card key={list.id} title={list.title} isFavorite={list.isFavorite} id={list.id} />
-          
-        )}
-        
-      </ul>
-    </div>
+    <div className={styles.column}>
+          {favoriteLists.length === 0 ? (
+            <p>No cards...</p>
+          ) : (
+            <ul className={styles.cards}>
+              {favoriteLists.map((list) => (
+                <Card key={list.id} title={list.title} isFavorite={list.isFavorite} id={list.id} />
+              ))}
+            </ul>
+          )}
+        </div>
     </div>
     </>
   );
