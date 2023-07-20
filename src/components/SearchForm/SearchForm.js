@@ -4,7 +4,7 @@ import TextInput from '../TextInput/TextInput';
 import Button from '../Button/Button';
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { searchString } from '../../redux/store';
+import { searchString } from '../../redux/searchStringRedux';
 import { useEffect } from 'react';
 
 
